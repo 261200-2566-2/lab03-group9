@@ -69,4 +69,9 @@ public class RPGcharacter {
         }
     }
 
+    public void AddItem(Sword sw , Shield sh){
+        this.sword = sw;
+        this.shield = sh;
+    }
+
 }
