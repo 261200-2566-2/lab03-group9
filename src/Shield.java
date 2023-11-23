@@ -16,7 +16,7 @@ public class Shield {
         //set Default level to 1
     }
 
-    public double IncreaseDmg(){
+    public double IncreaseDef(){
         return defense;
     }
 
