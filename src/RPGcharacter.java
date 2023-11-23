@@ -22,6 +22,7 @@ public class RPGcharacter {
         baseSpeed = 100;
         MaxSpeed = baseSpeed;
         MaxExp = 500;
+
     }
     //set default player stat
 }

@@ -8,6 +8,7 @@ public class Sword {
         this.name = name;
         SWlevel = level;
         damage = baseDmg*(1+0.1*SWlevel);
+
     }
 
     Sword(String name,int baseDmg){

@@ -10,6 +10,7 @@ public class Shield {
         defense = baseDef*(1+0.5*SHlevel);
     }
 
+
     Shield(String name,int baseDef){
         this(name,baseDef,1);
         //set Default level to 1
