@@ -23,4 +23,8 @@ public class Shield {
     public double DecreaseSped(double baseSped){
         return baseSped*(0.1+0.8*SHlevel);
     }
+    public String getName(){
+        return name;
+    }
+    public double getDefense() {return defense; }
 }

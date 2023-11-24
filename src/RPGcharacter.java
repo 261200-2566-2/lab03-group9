@@ -73,19 +73,102 @@ public class RPGcharacter {
     }
 
     public void PrintAllItem(){
-        System.out.println("");
-        System.out.printf("%-10s %-10s %-10s\n", "osne", "two", "thredsfe");
-        System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
-        System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
-        System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
-        System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
-        System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
-    }
-
-    public void PrintItemPlayer(){
+        System.out.println("Sword");
+        System.out.println("+-------------------------------------+");
+        PrintSword();
+        System.out.println("+-------------------------------------+");
+        System.out.println("Shield");
+        System.out.println("+-------------------------------------+");
+        PrintShield();
 
     }
 
+    public void PrintSword(){
+        switch (Swsize){
+            case 1:
+            {
+                System.out.printf("%-10s %-10s %-10s\n",sword[0].getName(), "asdasd", "thredsfe");
+                System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+                break;
+            }
+            case 2:
+            {
+                System.out.printf("%-10s %-10s %-10s\n",sword[0].getName(), sword[1].getName(), "thredsfe");
+                System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+                break;
+            }
+            case 3:
+            {
+                System.out.printf("%-10s %-10s %-10s\n",sword[0].getName(), sword[1].getName(), sword[2].getName());
+                System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+                break;
+            }
+            default:
+            {
+                System.out.printf("%-10s %-10s %-10s\n","Empty", "Empty", "Empty");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+            }
+        }
+    }
+    public void PrintShield(){
+        switch (SHsize){
+            case 1:
+            {
+                System.out.printf("%-10s %-10s %-10s\n",shield[0].getName(), "asdasd", "thredsfe");
+                System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+                break;
+            }
+            case 2:
+            {
+                System.out.printf("%-10s %-10s %-10s\n",shield[0].getName(), shield[1].getName(), "thredsfe");
+                System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+                break;
+            }
+            case 3:
+            {
+                System.out.printf("%-10s %-10s %-10s\n",shield[0].getName(), shield[1].getName(), shield[2].getName());
+                System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
+                System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
+                System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+                break;
+            }
+            default:
+            {
+                System.out.printf("%-10s %-10s %-10s\n","Empty", "Empty", "Empty");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+                System.out.printf("%-10s %-10s %-10s\n", "-", "-", "-");
+            }
+        }
+    }
     public void AddItem(Sword sw){
         if(Swsize > 3){
             System.out.println("Sword full!!");
@@ -103,9 +186,9 @@ public class RPGcharacter {
             shield[SHsize] = sh;
             SHsize++;
         }
-
-
     }
+
+
 //    public void Hold(Sword sw){
 //        this.sword = sw;
 //        damage += sw.IncreaseDmg();
