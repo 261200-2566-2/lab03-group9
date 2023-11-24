@@ -169,6 +169,7 @@ public class RPGcharacter {
             }
         }
     }
+
     public void AddItem(Sword sw){
         if(Swsize > 3){
             System.out.println("Sword full!!");
@@ -186,9 +187,9 @@ public class RPGcharacter {
             shield[SHsize] = sh;
             SHsize++;
         }
+
+
     }
-
-
 //    public void Hold(Sword sw){
 //        this.sword = sw;
 //        damage += sw.IncreaseDmg();
