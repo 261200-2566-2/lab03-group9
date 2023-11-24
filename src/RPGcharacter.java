@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class RPGcharacter {
     private String name;
     private int level;
@@ -44,7 +46,7 @@ public class RPGcharacter {
         System.out.println("+-------------------------------------+");
         System.out.println("[ Item Storage ]");
         System.out.println("+-------------------------------------+");
-        System.out.println("ค่อยทำ");
+
         System.out.println("+-------------------------------------+");
     }
 
@@ -68,6 +70,20 @@ public class RPGcharacter {
                 break;
             }
         }
+    }
+
+    public void PrintAllItem(){
+        System.out.println("");
+        System.out.printf("%-10s %-10s %-10s\n", "osne", "two", "thredsfe");
+        System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
+        System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
+        System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
+        System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
+        System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+    }
+
+    public void PrintItemPlayer(){
+
     }
 
     public void AddItem(Sword sw){
