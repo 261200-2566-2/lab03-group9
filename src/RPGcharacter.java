@@ -1,5 +1,3 @@
-import java.security.PublicKey;
-
 public class RPGcharacter {
     private String name;
     private int level;
@@ -74,4 +72,25 @@ public class RPGcharacter {
         this.shield = sh;
     }
 
+    public void Hold(Sword sw){
+        this.sword = sw;
+        damage += sw.IncreaseDmg();
+        baseSpeed -= sw.DecreaseSped(baseSpeed);
+    }
+
+    public void Hold(Shield sh){
+        this.shield = sh;
+        defense += sh.IncreaseDef();
+        baseSpeed -= sh.DecreaseSped(baseSpeed);
+    }
+
+    public void Hold(Sword sw,Shield sh){
+        damage += sw.IncreaseDmg();
+        defense += sh.IncreaseDef();
+        baseSpeed -= sw.DecreaseSped(baseSpeed)+sh.DecreaseSped(baseSpeed);
+    }
+
+    public void Hold(Shield sh,Sword sw){
+        this.Hold(sw,sh);
+    }
 }
