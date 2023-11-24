@@ -2,16 +2,18 @@
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        RPGcharacter p1 = new RPGcharacter("Lnwza007");
+        Sword s1 = new Sword("Excaliber",10);
+        Sword s2 = new Sword("suhdf",123);
+        Sword s3 = new Sword("3asdfg",55);
+        Sword s4 = new Sword("ifusghu",3498);
+        p1.AddItem(s1);
+        p1.AddItem(s2);
+        p1.AddItem(s3);
+//        p1.AddItem(s4);
+//        System.out.println(p1.sword[0].name);
+//        System.out.println(p1.sword[1].name);
+//        System.out.println(p1.sword[2].name);
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
     }
 }

@@ -10,8 +10,11 @@ public class RPGcharacter {
     private double CurrentExp;
     private int MaxExp;
     private double exp;
-    private Sword sword;
-    private Shield shield;
+    private Sword [] sword = new Sword[3];
+    private Shield [] shield = new Shield[3];
+    private int Swsize;
+    private int SHsize;
+
 
     RPGcharacter(String name){
         this.name = name;
@@ -67,30 +70,45 @@ public class RPGcharacter {
         }
     }
 
-    public void AddItem(Sword sw , Shield sh){
-        this.sword = sw;
-        this.shield = sh;
+    public void AddItem(Sword sw){
+        if(Swsize > 3){
+            System.out.println("Sword full!!");
+        }else {
+            sword[Swsize] = sw;
+            Swsize++;
+        }
+
     }
 
-    public void Hold(Sword sw){
-        this.sword = sw;
-        damage += sw.IncreaseDmg();
-        baseSpeed -= sw.DecreaseSped(baseSpeed);
-    }
+    public void AddItem(Shield sh){
+        if(SHsize > 3){
+            System.out.println("Shield full!!");
+        }else{
+            shield[SHsize] = sh;
+            SHsize++;
+        }
 
-    public void Hold(Shield sh){
-        this.shield = sh;
-        defense += sh.IncreaseDef();
-        baseSpeed -= sh.DecreaseSped(baseSpeed);
-    }
 
-    public void Hold(Sword sw,Shield sh){
-        damage += sw.IncreaseDmg();
-        defense += sh.IncreaseDef();
-        baseSpeed -= sw.DecreaseSped(baseSpeed)+sh.DecreaseSped(baseSpeed);
     }
-
-    public void Hold(Shield sh,Sword sw){
-        this.Hold(sw,sh);
-    }
+//    public void Hold(Sword sw){
+//        this.sword = sw;
+//        damage += sw.IncreaseDmg();
+//        baseSpeed -= sw.DecreaseSped(baseSpeed);
+//    }
+//
+//    public void Hold(Shield sh){
+//        this.shield = sh;
+//        defense += sh.IncreaseDef();
+//        baseSpeed -= sh.DecreaseSped(baseSpeed);
+//    }
+//
+//    public void Hold(Sword sw,Shield sh){
+//        damage += sw.IncreaseDmg();
+//        defense += sh.IncreaseDef();
+//        baseSpeed -= sw.DecreaseSped(baseSpeed)+sh.DecreaseSped(baseSpeed);
+//    }
+//
+//    public void Hold(Shield sh,Sword sw){
+//        this.Hold(sw,sh);
+//    }
 }
