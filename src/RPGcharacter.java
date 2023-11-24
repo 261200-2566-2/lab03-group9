@@ -73,13 +73,12 @@ public class RPGcharacter {
     }
 
     public void PrintAllItem(){
-        System.out.println("");
-        System.out.printf("%-10s %-10s %-10s\n", "osne", "two", "thredsfe");
-        System.out.printf("%-10s %-10s %-10s\n", "one", "tdsfwo", "thsdfree");
-        System.out.printf("%-10s %-10s %-10s\n", "onsdfe", "twdfo", "three");
-        System.out.printf("%-10s %-10s %-10s\n", "odsfne", "twsdfo", "thdfree");
-        System.out.printf("%-10s %-10s %-10s\n", "osdne", "twdfo", "three");
-        System.out.printf("%-10s %-10s %-10s\n", "odsfne", "tdfwo", "three");
+        System.out.printf("%-10s %-10s\n", array[0], array[1]);
+        System.out.printf("%-10s %-10s\n", "one", "tdsfwo");
+        System.out.printf("%-10s %-10s\n", "onsdfe", "twdfo");
+        System.out.printf("%-10s %-10s\n", "odsfne", "twsdfo");
+        System.out.printf("%-10s %-10s\n", "osdne", "twdfo");
+        System.out.printf("%-10s %-10s\n", "odsfne", "tdfwo");
     }
 
     public void PrintItemPlayer(){
