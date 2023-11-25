@@ -12,8 +12,8 @@ public class RPGcharacter {
     private double CurrentExp;
     private int MaxExp;
     private double exp;
-    private final Sword [] sword = new Sword[3];
-    private final Shield [] shield = new Shield[3];
+    private Sword [] sword = new Sword[3];
+    private Shield [] shield = new Shield[3];
     private int Swsize;
     private Sword currentSword;
     private Shield currentShield;
