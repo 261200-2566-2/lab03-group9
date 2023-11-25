@@ -17,9 +17,9 @@ public class Main {
         p1.AddItem(sh2);
         p1.AddItem(sh3);
 
-        p1.Hold();
-        p1.PrintStatus();
-        //p1.getEXP(100000);
+        //p1.Hold();
         //p1.PrintStatus();
+        p1.getEXP(3200);
+        p1.PrintStatus();
     }
 }

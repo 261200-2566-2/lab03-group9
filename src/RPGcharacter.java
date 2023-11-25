@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.logging.Level;
 
 public class RPGcharacter {
     private final String name;
@@ -35,6 +36,9 @@ public class RPGcharacter {
     }
     //set default player stat
     public void PrintStatus(){
+        while (exp > MaxExp){
+            LevelUp();
+        }
         System.out.println("+-------------------------------------+");
         System.out.println("[ Status : " + name +" ]");
         System.out.println("+-------------------------------------+");
@@ -54,24 +58,21 @@ public class RPGcharacter {
 
     public void LevelUp(){
         level ++;
-        System.out.println("Level Up!!!");
+        System.out.println("Level Up!! " + "Level " + 1 + " --> "+"Level " + level );
         MaxExp = MaxExp + 500;
         MaxHp = 100 + (10*level);
         MaxMana = 50 + (2*level);
-        MaxSpeed = MaxSpeed*(0.1+(0.03*level));
+        MaxSpeed = MaxSpeed + MaxSpeed*(0.1+(0.03*level));
     }
     public void getEXP(double exp){
         this.exp = exp;
-        CurrentExp = CurrentExp + exp;
-        while (CurrentExp < MaxExp){
-            if(CurrentExp >= MaxExp){
-                CurrentExp = CurrentExp - MaxExp;
-                LevelUp();
-            }
-            else {
-                CurrentExp = CurrentExp + exp;
-                break;
-            }
+        CurrentExp = exp;
+        if(CurrentExp >= MaxExp){
+            CurrentExp = CurrentExp - MaxExp;
+            LevelUp();
+        }
+        else {
+            CurrentExp = exp;
         }
     }
 
@@ -233,25 +234,25 @@ public class RPGcharacter {
         if(answer.equals("bth") || answer.equals("BTH")){
             System.out.println("Select your sword");
             PrintSword();
-            System.out.print("Choose sword: ");
+            System.out.print("Choose sword 1 , 2 , 3 : ");
             int as = sl.nextInt();
             CurrentSword(as);
 
             System.out.println("Select your shield");
             PrintShield();
-            System.out.print("Choose shield: ");
+            System.out.print("Choose shield 1 , 2 , 3 : ");
             int as2 = sl.nextInt();
             CurrentShield(as2);
         }else if(answer.equals("sw") || answer.equals("SW")){
             System.out.println("Select your sword");
             PrintSword();
-            System.out.print("Choose sword: ");
+            System.out.print("Choose sword 1 , 2 , 3 : ");
             int as = sl.nextInt();
             CurrentSword(as);
         }else if(answer.equals("sh") || answer.equals("SH")){
             System.out.println("Select your shield");
             PrintShield();
-            System.out.print("Choose shield: ");
+            System.out.print("Choose shield  1 , 2 , 3 : ");
             int as2 = sl.nextInt();
             CurrentShield(as2);
         }else{
