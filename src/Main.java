@@ -19,7 +19,7 @@ public class Main {
 
         //p1.Hold();
         //p1.PrintStatus();
-        p1.getEXP(3200);
+        p1.getEXP(1000);
         p1.PrintStatus();
     }
 }

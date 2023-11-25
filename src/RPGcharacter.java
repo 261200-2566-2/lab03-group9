@@ -4,6 +4,8 @@ import java.util.logging.Level;
 public class RPGcharacter {
     private final String name;
     private int level;
+
+    private int CurrentLevel;
     private int MaxHp;
     private int MaxMana;
     private double damage;
@@ -36,8 +38,14 @@ public class RPGcharacter {
     }
     //set default player stat
     public void PrintStatus(){
-        while (exp > MaxExp){
-            LevelUp();
+        while (exp >= MaxExp){
+            if(CurrentExp >= MaxExp){
+                CurrentExp = CurrentExp - MaxExp;
+                LevelUp();
+            }
+            else {
+                CurrentExp = exp;
+            }
         }
         System.out.println("+-------------------------------------+");
         System.out.println("[ Status : " + name +" ]");
@@ -57,23 +65,19 @@ public class RPGcharacter {
     }
 
     public void LevelUp(){
+        int CurrentLevel = level;
         level ++;
-        System.out.println("Level Up!! " + "Level " + 1 + " --> "+"Level " + level );
+
+        System.out.println("Level Up!! " + "Level " + CurrentLevel + " --> "+"Level " + level );
         MaxExp = MaxExp + 500;
-        MaxHp = 100 + (10*level);
-        MaxMana = 50 + (2*level);
-        MaxSpeed = MaxSpeed + MaxSpeed*(0.1+(0.03*level));
+        MaxHp = MaxHp + 100 + (10*level);
+        MaxMana = MaxMana  + 50 + (2*level);
+        MaxSpeed = MaxSpeed + 0.75*level;
+        baseSpeed = MaxSpeed;
     }
     public void getEXP(double exp){
         this.exp = exp;
-        CurrentExp = exp;
-        if(CurrentExp >= MaxExp){
-            CurrentExp = CurrentExp - MaxExp;
-            LevelUp();
-        }
-        else {
-            CurrentExp = exp;
-        }
+        CurrentExp = CurrentExp + exp;
     }
 
     public void PrintCurrentItem(){
