@@ -21,14 +21,14 @@ public class Sword {
     }
 
     public double DecreaseSped(double baseSped){
-        return baseSped*(0.1+0.4*SWlevel);
+        return baseSped*(0.1+0.04*SWlevel);
     }
 
     public String getName(){
         return name;
     }
     public double getDamage() {return  damage; }
-
+    public int getLevel() {return SWlevel;}
 
 
 }
