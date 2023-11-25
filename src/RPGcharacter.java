@@ -15,8 +15,8 @@ public class RPGcharacter {
     private double CurrentExp;
     private int MaxExp;
     private double exp;
-    private Sword [] sword = new Sword[3];
-    private Shield [] shield = new Shield[3];
+    private Sword [] sword = new Sword[4];
+    private Shield [] shield = new Shield[4];
     private int Swsize;
     private Sword currentSword;
     private Shield currentShield;
@@ -45,23 +45,28 @@ public class RPGcharacter {
         System.out.println("Max HP : " + MaxHp);
         System.out.println("Max Mana : " + MaxMana);
         System.out.println("CurrentSpeed / MaxSpeed : " + baseSpeed + " / " + MaxSpeed);
-        System.out.println("Damage : " + damage);
-        System.out.println("Defense : " + defense);
+        System.out.println("Damage : " + damage );
+        System.out.println("Defense : " + defense );
         System.out.println("Exp / MaxEXP : " + CurrentExp + " / " + MaxExp);
         System.out.println("+-------------------------------------+");
         System.out.println("[ Current item ]");
         System.out.println("+-------------------------------------+");
         PrintCurrentItem();
         System.out.println("+-------------------------------------+");
+
+        //+ " [ +" + String.format("%.1f",currentSword.getDamage()) + " ]"
+        //+ " [ +" + String.format("%.1f",currentShield.getDefense()) + " ]"
     }
 
     public void LevelUp(){
         int CurrentLevel = level;
         level ++;
         System.out.println("Level Up!! " + "Level " + CurrentLevel + " --> "+"Level " + level );
+        damage = damage + 3;
+        defense = defense + 4;
         MaxHp = MaxHp + 100 + (10*level);
         MaxMana = MaxMana  + 50 + (2*level);
-        MaxSpeed = MaxSpeed + 0.5*level;
+        MaxSpeed = MaxSpeed + 1.5*level;
         baseSpeed = MaxSpeed;
     }
     public void getEXP(double exp){
@@ -216,7 +221,7 @@ public class RPGcharacter {
     }
 
     public void CurrentShield(int i){
-        if(i < 1 || i > 3){
+        if(i < 1 || i > 3 ){
             System.out.println("Error!!! you enter wrong choice");
             return;
         }
@@ -244,7 +249,7 @@ public class RPGcharacter {
 
             System.out.println("Select your shield");
             PrintShield();
-            System.out.print("Choose shield 1 , 2 , 3 : ");
+            System.out.print("Choose sword 1 , 2 , 3 : ");
             int as2 = sl.nextInt();
             CurrentShield(as2);
         }else if(answer.equals("sw") || answer.equals("SW")){
@@ -253,12 +258,16 @@ public class RPGcharacter {
             System.out.print("Choose sword 1 , 2 , 3 : ");
             int as = sl.nextInt();
             CurrentSword(as);
+            int as2 = 4;
+            CurrentShield(as2);
         }else if(answer.equals("sh") || answer.equals("SH")){
             System.out.println("Select your shield");
             PrintShield();
-            System.out.print("Choose shield  1 , 2 , 3 : ");
+            System.out.print("Choose sword 1 , 2 , 3 : ");
             int as2 = sl.nextInt();
             CurrentShield(as2);
+            int as = 4;
+            CurrentShield(as);
         }else{
             System.out.println("Error!!! you enter wrong choice");
         }
