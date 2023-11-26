@@ -1,9 +1,8 @@
 import java.util.Scanner;
 
 public class RPGcharacter {
-    private final String name;
+    private  String name;
     private int level;
-
     private int CurrentLevel;
     private int MaxHp;
     private int MaxMana;
