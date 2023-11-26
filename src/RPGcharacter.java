@@ -289,13 +289,11 @@ public class RPGcharacter {
             } else if (answer.equals("sw") || answer.equals("SW")) {
                 SelectSword();
             } else if (answer.equals("sh") || answer.equals("SH")) {
-                if ((shield[0] == null)) {
-                    SelectShield();
-                } else {
-                    System.out.println("Error!!! you enter wrong choice");
+                SelectShield();
+            }else {
+                System.out.println("Error!!! you enter wrong choice");
                 }
             }
 
         }
     }
-}
