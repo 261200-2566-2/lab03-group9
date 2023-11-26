@@ -12,7 +12,6 @@ public class RPGcharacter {
     private double baseSpeed;
     private double CurrentExp;
     private int MaxExp;
-    private double exp;
     private Sword[] sword = new Sword[3];
     private Shield[] shield = new Shield[3];
     private int Swsize;
@@ -30,7 +29,7 @@ public class RPGcharacter {
         defense = 10;
         MaxSpeed = 100;
         baseSpeed = MaxSpeed;
-        CurrentExp = exp;
+        CurrentExp = 0;
         MaxExp = 500;
 
     }
@@ -70,7 +69,6 @@ public class RPGcharacter {
     }
 
     public void getEXP(double exp) {
-        this.exp = exp;
         CurrentExp = CurrentExp + exp;
         while (exp >= MaxExp) {
             if (CurrentExp >= MaxExp) {
