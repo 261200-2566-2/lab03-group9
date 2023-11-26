@@ -56,7 +56,7 @@ public class RPGcharacter {
 
     }
 
-    public void LevelUp() {
+    private void LevelUp() {
         CurrentLevel = level;
         level++;
         System.out.println(name + " Level Up!! " + "Level " + CurrentLevel + " --> " + "Level " + level);
@@ -83,7 +83,7 @@ public class RPGcharacter {
     }
 
 
-    public void PrintCurrentItem() {
+    private void PrintCurrentItem() {
         if (currentShield != null && currentSword != null) {
             System.out.println("Sword: " + currentSword.getName() + " / " + "+" + String.format("%.1f", currentSword.getDamage()) + " Dmg" + " / " + "-" + String.format("%.1f", currentSword.DecreaseSped()) + " Sped");
             System.out.println("Shield: " + currentShield.getName() + " / " + "+" + String.format("%.1f", currentShield.getDefense()) + " Def" + " / " + "-" + String.format("%.1f", currentShield.DecreaseSped()) + " Sped");
@@ -97,7 +97,7 @@ public class RPGcharacter {
         }
     }
 
-    public void PrintSword() {
+    private void PrintSword() {
         System.out.println("                      Sword");
         switch (Swsize) {
             case 1: {
@@ -140,7 +140,7 @@ public class RPGcharacter {
         }
     }
 
-    public void PrintShield() {
+    private void PrintShield() {
         System.out.println("                      Shield");
         switch (SHsize) {
             case 1: {
@@ -199,7 +199,7 @@ public class RPGcharacter {
         }
     }
 
-    public void CurrentSword(int i) {
+    private void CurrentSword(int i) {
         if (i < 1 || i > 3) {
             System.out.println("Error!!! you enter wrong choice");
             return;
@@ -216,7 +216,7 @@ public class RPGcharacter {
 
     }
 
-    public void CurrentShield(int i) {
+    private void CurrentShield(int i) {
         if (i < 1 || i > 3) {
             System.out.println("Error!!! you enter wrong choice");
             return;
