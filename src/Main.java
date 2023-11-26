@@ -1,17 +1,51 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        RPGcharacter p1 = new RPGcharacter("Lnwza007");
+        RPGcharacter p2 = new RPGcharacter("Zoro");
+        RPGcharacter p3 = new RPGcharacter("Thorfinn");
+        RPGcharacter p4 = new RPGcharacter("Kirito");
+        Sword s1 = new Sword("ดาบไทย",20);
+        Sword s2 = new Sword("Muramasa",110,9);
+        Sword s3 = new Sword("Excalibur",1000,25);
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Shield sh1 = new Shield("The Scutum",40,2);
+        Shield sh2 = new Shield("Kite Shield",100,12);
+        Shield sh3 = new Shield("The Aegis",450,25);
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        p1.AddItem(s1);
+        p1.AddItem(s2);
+        p1.AddItem(s3);
+        p1.AddItem(sh1);
+        p1.AddItem(sh2);
+        p1.AddItem(sh3);
+
+        p2.AddItem(s2);
+        p2.AddItem(s3);
+
+        p4.AddItem(s1);
+
+        p1.PrintStatus();
+        //p2.PrintStatus();
+        //p3.PrintStatus();
+        //p4.PrintStatus();
+
+//        //test p1 lv up to 25 and try to use Excalibur(lv 25)
+        p1.getEXP(150000);
+        p1.Hold();
+        p1.PrintStatus();
+
+        //test p2 lv up to 2 and try to use Excalibur(lv 25) it can not use because lv lower than sword lv
+//        p2.getEXP(1000);
+//        p2.Hold();
+//        p2.PrintStatus();
+
+        //test p3 try to use item but Empty slot
+        //p3.Hold();
+
+        //test p4 have only sword but no shield
+        //p4.Hold();
+        //p4.PrintStatus();
+
     }
 }
