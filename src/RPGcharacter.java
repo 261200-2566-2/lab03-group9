@@ -294,6 +294,5 @@ public class RPGcharacter {
                 System.out.println("Error!!! you enter wrong choice");
                 }
             }
-
         }
     }

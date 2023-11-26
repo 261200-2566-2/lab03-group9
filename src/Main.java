@@ -32,8 +32,8 @@ public class Main {
 
 //        //test p1 lv up to 25 and try to use Excalibur(lv 25)
         p1.getEXP(150000);
-//        p1.Hold();
-//        p1.PrintStatus();
+        p1.Hold();
+        p1.PrintStatus();
 
         //test p2 lv up to 2 and try to use Excalibur(lv 25) it can not use because lv lower than sword lv
 //        p2.getEXP(1000);

@@ -15,7 +15,6 @@ public class Sword {
         this(name,baseDmg,1);
         //set Default level to 1
     }
-
     public double DecreaseSped(){
         return SItemSpeed;
     }
