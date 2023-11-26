@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.logging.Level;
 
 public class RPGcharacter {
     private final String name;
@@ -15,15 +14,15 @@ public class RPGcharacter {
     private double CurrentExp;
     private int MaxExp;
     private double exp;
-    private Sword [] sword = new Sword[4];
-    private Shield [] shield = new Shield[4];
+    private Sword[] sword = new Sword[3];
+    private Shield[] shield = new Shield[3];
     private int Swsize;
     private Sword currentSword;
     private Shield currentShield;
     private int SHsize;
 
 
-    RPGcharacter(String name){
+    RPGcharacter(String name) {
         this.name = name;
         level = 1;
         MaxHp = 100;
@@ -36,242 +35,270 @@ public class RPGcharacter {
         MaxExp = 500;
 
     }
+
     //set default player stat
-    public void PrintStatus(){
+    public void PrintStatus() {
         System.out.println("+-------------------------------------+");
-        System.out.println("[ Status : " + name +" ]");
+        System.out.println("[ Status : " + name + " ]");
         System.out.println("+-------------------------------------+");
         System.out.println("Level : " + level);
         System.out.println("Max HP : " + MaxHp);
         System.out.println("Max Mana : " + MaxMana);
-        System.out.println("CurrentSpeed / MaxSpeed : " + baseSpeed + " / " + MaxSpeed);
-        System.out.println("Damage : " + damage );
-        System.out.println("Defense : " + defense );
+        System.out.println("CurrentSpeed" + " / " + "MaxSpeed : " + baseSpeed + " / " + MaxSpeed);
+        System.out.println("Damage : " + damage);
+        System.out.println("Defense : " + defense);
         System.out.println("Exp / MaxEXP : " + CurrentExp + " / " + MaxExp);
         System.out.println("+-------------------------------------+");
         System.out.println("[ Current item ]");
         System.out.println("+-------------------------------------+");
         PrintCurrentItem();
         System.out.println("+-------------------------------------+");
+        System.out.println();
 
-        //+ " [ +" + String.format("%.1f",currentSword.getDamage()) + " ]"
-        //+ " [ +" + String.format("%.1f",currentShield.getDefense()) + " ]"
+
     }
 
-    public void LevelUp(){
-        int CurrentLevel = level;
-        level ++;
-        System.out.println("Level Up!! " + "Level " + CurrentLevel + " --> "+"Level " + level );
-        damage = damage + 3;
-        defense = defense + 4;
-        MaxHp = MaxHp + 100 + (10*level);
-        MaxMana = MaxMana  + 50 + (2*level);
-        MaxSpeed = MaxSpeed + 1.5*level;
+    public void LevelUp() {
+        CurrentLevel = level;
+        level++;
+        System.out.println(name + " Level Up!! " + "Level " + CurrentLevel + " --> " + "Level " + level);
+        damage += 10 + (0.5 * level);
+        defense += 5 + (0.2 * level);
+        MaxHp += 100 + (10 * level);
+        MaxMana += 50 + (2 * level);
+        MaxSpeed += 1.5 * level;
         baseSpeed = MaxSpeed;
     }
-    public void getEXP(double exp){
+
+    public void getEXP(double exp) {
         this.exp = exp;
         CurrentExp = CurrentExp + exp;
-        while (exp >= MaxExp){
-            if(CurrentExp >= MaxExp){
+        while (exp >= MaxExp) {
+            if (CurrentExp >= MaxExp) {
                 LevelUp();
                 CurrentExp = CurrentExp - MaxExp;
                 MaxExp = MaxExp + 500;
-            }
-            else {
+            } else {
                 CurrentExp = CurrentExp + 0;
                 return;
             }
         }
     }
 
-    public void PrintCurrentItem(){
-        if(currentShield != null && currentSword != null){
-            System.out.println("Sword: "+ currentSword.getName() + " +" + String.format("%.1f",currentSword.getDamage())+" Dmg");
-            System.out.println("Shield: "+ currentShield.getName()+ " +" + String.format("%.1f",currentShield.getDefense())+" Def");
-        }else if(currentShield != null){
-            System.out.println("Shield: "+ currentShield.getName()+ " +" + String.format("%.1f",currentShield.getDefense())+" Def");
-        }else if(currentSword != null){
-            System.out.println("Sword: "+ currentSword.getName() + " +" + String.format("%.1f",currentSword.getDamage())+" Dmg");
-        }else{
+
+    public void PrintCurrentItem() {
+        if (currentShield != null && currentSword != null) {
+            System.out.println("Sword: " + currentSword.getName() + " / " + "+" + String.format("%.1f", currentSword.getDamage()) + " Dmg" + " / " + "-" + String.format("%.1f", currentSword.DecreaseSped()) + " Sped");
+            System.out.println("Shield: " + currentShield.getName() + " / " + "+" + String.format("%.1f", currentShield.getDefense()) + " Def" + " / " + "-" + String.format("%.1f", currentShield.DecreaseSped()) + " Sped");
+        } else if (currentShield != null) {
+            System.out.println("Shield: " + currentShield.getName() + " / " + "+" + String.format("%.1f", currentShield.getDefense()) + " Def" + " / " + "-" + String.format("%.1f", currentShield.DecreaseSped()) + " Sped");
+        } else if (currentSword != null) {
+            System.out.println("Sword: " + currentSword.getName() + " / " + "+" + String.format("%.1f", currentSword.getDamage()) + " Dmg" + " / " + "-" + String.format("%.1f", currentSword.DecreaseSped()) + " Sped");
+        } else {
             System.out.println("No item using...");
+
         }
     }
-    public void PrintSword(){
+
+    public void PrintSword() {
         System.out.println("                      Sword");
-        switch (Swsize){
-            case 1:
-            {
+        switch (Swsize) {
+            case 1: {
                 System.out.println("+--------------------------------------------------------+");
-                System.out.printf(" %-17s %-17s %-17s\n","Slot 1", "Slot 2", "Slot 3");
+                System.out.printf(" %-17s %-17s %-17s\n", "Slot 1", "Slot 2", "Slot 3");
                 System.out.println("+--------------------------------------------------------+");
                 System.out.printf(" %-20s%-20s%-20s\n", "Name: " + sword[0].getName(), "-", "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Level: "+ sword[0].getLevel(), "-", "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Damage: "+ String.format("%.1f", sword[0].getDamage()), "-", "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" +String.format("%.1f",sword[0].DecreaseSped(MaxSpeed)), "-", "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Level: " + sword[0].getLevel(), "-", "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Damage: " + String.format("%.1f", sword[0].getDamage()), "-", "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" + String.format("%.1f", sword[0].DecreaseSped()), "-", "-");
                 System.out.println("+--------------------------------------------------------+");
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 System.out.println("+--------------------------------------------------------+");
-                System.out.printf(" %-20s %-17s %-20s\n","Slot 1", "Slot 2", "Slot 3");
+                System.out.printf(" %-20s %-17s %-20s\n", "Slot 1", "Slot 2", "Slot 3");
                 System.out.println("+--------------------------------------------------------+");
                 System.out.printf(" %-20s%-20s%-20s\n", "Name: " + sword[0].getName(), "Name: " + sword[1].getName(), "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Level: "+ sword[0].getLevel(), "Level: "+ sword[1].getLevel(), "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Damage: "+ String.format("%.1f", sword[0].getDamage()), "Damage: "+ String.format("%.1f", sword[1].getDamage()), "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" +String.format("%.1f",sword[0].DecreaseSped(MaxSpeed)), "Speed: -" +String.format("%.1f",sword[1].DecreaseSped(MaxSpeed)), "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Level: " + sword[0].getLevel(), "Level: " + sword[1].getLevel(), "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Damage: " + String.format("%.1f", sword[0].getDamage()), "Damage: " + String.format("%.1f", sword[1].getDamage()), "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" + String.format("%.1f", sword[0].DecreaseSped()), "Speed: -" + String.format("%.1f", sword[1].DecreaseSped()), "-");
                 System.out.println("+--------------------------------------------------------+");
                 break;
             }
-            case 3:
-            {
+            case 3: {
                 System.out.println("+--------------------------------------------------------+");
-                System.out.printf(" %-20s %-20s %-20s\n","Slot 1", "Slot 2", "Slot 3");
+                System.out.printf(" %-20s %-20s %-20s\n", "Slot 1", "Slot 2", "Slot 3");
                 System.out.println("+--------------------------------------------------------+");
                 System.out.printf(" %-20s%-20s%-20s\n", "Name: " + sword[0].getName(), "Name: " + sword[1].getName(), "Name: " + sword[2].getName());
-                System.out.printf(" %-20s%-20s%-20s\n", "Level: "+ sword[0].getLevel(), "Level: "+ sword[1].getLevel(), "Level: "+ sword[2].getLevel());
-                System.out.printf(" %-20s%-20s%-20s\n", "Damage: "+ String.format("%.1f", sword[0].getDamage()), "Damage: "+ String.format("%.1f", sword[1].getDamage()), "Damage: "+ String.format("%.1f", sword[2].getDamage()));
-                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" +String.format("%.1f",sword[0].DecreaseSped(MaxSpeed)), "Speed: -" +String.format("%.1f",sword[1].DecreaseSped(MaxSpeed)), "Speed: -" +String.format("%.1f",sword[2].DecreaseSped(MaxSpeed)));
+                System.out.printf(" %-20s%-20s%-20s\n", "Level: " + sword[0].getLevel(), "Level: " + sword[1].getLevel(), "Level: " + sword[2].getLevel());
+                System.out.printf(" %-20s%-20s%-20s\n", "Damage: " + String.format("%.1f", sword[0].getDamage()), "Damage: " + String.format("%.1f", sword[1].getDamage()), "Damage: " + String.format("%.1f", sword[2].getDamage()));
+                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" + String.format("%.1f", sword[0].DecreaseSped()), "Speed: -" + String.format("%.1f", sword[1].DecreaseSped()), "Speed: -" + String.format("%.1f", sword[2].DecreaseSped()));
                 System.out.println("+--------------------------------------------------------+");
                 break;
             }
-            default:
-            {
+            default: {
                 System.out.println("+--------------------------------------------------------+");
                 System.out.println("Empty sword slot...");
             }
         }
     }
-    public void PrintShield(){
+
+    public void PrintShield() {
         System.out.println("                      Shield");
-        switch (SHsize){
-            case 1:
-            {
+        switch (SHsize) {
+            case 1: {
                 System.out.println("+--------------------------------------------------------+");
-                System.out.printf(" %-17s %-17s %-17s\n","Slot 1", "Slot 2", "Slot 3");
+                System.out.printf(" %-17s %-17s %-17s\n", "Slot 1", "Slot 2", "Slot 3");
                 System.out.println("+--------------------------------------------------------+");
                 System.out.printf(" %-20s%-20s%-20s\n", "Name: " + shield[0].getName(), "-", "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Level: "+ shield[0].getLevel(), "-", "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Defense: "+ String.format("%.1f", shield[0].getDefense()), "-", "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" +String.format("%.1f",shield[0].DecreaseSped(MaxSpeed)), "-", "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Level: " + shield[0].getLevel(), "-", "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Defense: " + String.format("%.1f", shield[0].getDefense()), "-", "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" + String.format("%.1f", shield[0].DecreaseSped()), "-", "-");
                 System.out.println("+--------------------------------------------------------+");
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 System.out.println("+--------------------------------------------------------+");
-                System.out.printf(" %-20s %-17s %-20s\n","Slot 1", "Slot 2", "Slot 3");
+                System.out.printf(" %-20s %-17s %-20s\n", "Slot 1", "Slot 2", "Slot 3");
                 System.out.println("+--------------------------------------------------------+");
                 System.out.printf(" %-20s%-20s%-20s\n", "Name: " + shield[0].getName(), "Name: " + shield[1].getName(), "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Level: "+ shield[0].getLevel(), "Level: "+ shield[1].getLevel(), "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Defense: "+ String.format("%.1f", shield[0].getDefense()), "Defense: "+ String.format("%.1f", shield[1].getDefense()), "-");
-                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" +String.format("%.1f",shield[0].DecreaseSped(MaxSpeed)), "Speed: -" +String.format("%.1f",shield[1].DecreaseSped(MaxSpeed)), "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Level: " + shield[0].getLevel(), "Level: " + shield[1].getLevel(), "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Defense: " + String.format("%.1f", shield[0].getDefense()), "Defense: " + String.format("%.1f", shield[1].getDefense()), "-");
+                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" + String.format("%.1f", shield[0].DecreaseSped()), "Speed: -" + String.format("%.1f", shield[1].DecreaseSped()), "-");
                 System.out.println("+--------------------------------------------------------+");
                 break;
             }
-            case 3:
-            {
+            case 3: {
                 System.out.println("+--------------------------------------------------------+");
-                System.out.printf(" %-20s %-20s %-20s\n","Slot 1", "Slot 2", "Slot 3");
+                System.out.printf(" %-20s %-20s %-20s\n", "Slot 1", "Slot 2", "Slot 3");
                 System.out.println("+--------------------------------------------------------+");
                 System.out.printf(" %-20s%-20s%-20s\n", "Name: " + shield[0].getName(), "Name: " + shield[1].getName(), "Name: " + shield[2].getName());
-                System.out.printf(" %-20s%-20s%-20s\n", "Level: "+ shield[0].getLevel(), "Level: "+ shield[1].getLevel(), "Level: "+ shield[2].getLevel());
-                System.out.printf(" %-20s%-20s%-20s\n", "Defense: "+ String.format("%.1f", shield[0].getDefense()), "Defense: "+ String.format("%.1f", shield[1].getDefense()), "Defense: "+ String.format("%.1f", shield[2].getDefense()));
-                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" +String.format("%.1f",shield[0].DecreaseSped(MaxSpeed)), "Speed: -" +String.format("%.1f",shield[1].DecreaseSped(MaxSpeed)), "Speed: -" +String.format("%.1f",shield[2].DecreaseSped(MaxSpeed)));
+                System.out.printf(" %-20s%-20s%-20s\n", "Level: " + shield[0].getLevel(), "Level: " + shield[1].getLevel(), "Level: " + shield[2].getLevel());
+                System.out.printf(" %-20s%-20s%-20s\n", "Defense: " + String.format("%.1f", shield[0].getDefense()), "Defense: " + String.format("%.1f", shield[1].getDefense()), "Defense: " + String.format("%.1f", shield[2].getDefense()));
+                System.out.printf(" %-20s%-20s%-20s\n", "Speed: -" + String.format("%.1f", shield[0].DecreaseSped()), "Speed: -" + String.format("%.1f", shield[1].DecreaseSped()), "Speed: -" + String.format("%.1f", shield[2].DecreaseSped()));
                 System.out.println("+--------------------------------------------------------+");
                 break;
             }
-            default:
-            {
+            default: {
                 System.out.println("+--------------------------------------------------------+");
                 System.out.println("Empty shield slot...");
             }
         }
     }
 
-    public void AddItem(Sword sw){
-            sword[Swsize] = sw;
-            Swsize++;
-            if(Swsize == 3){
-                System.out.println("Sword slot full... (3)");
-            }
-    }
-
-    public void AddItem(Shield sh){
-            shield[SHsize] = sh;
-            SHsize++;
-        if(SHsize == 3){
-            System.out.println("Shield slot full... (3)");
+    public void AddItem(Sword sw) {
+        sword[Swsize] = sw;
+        Swsize++;
+        if (Swsize == 3) {
+            System.out.println(name + " Sword slot full... (3)");
         }
     }
-    public void CurrentSword(int i){
-        if(i < 1 || i > 3){
+
+    public void AddItem(Shield sh) {
+        shield[SHsize] = sh;
+        SHsize++;
+        if (SHsize == 3) {
+            System.out.println(name + " Shield slot full... (3)");
+        }
+    }
+
+    public void CurrentSword(int i) {
+        if (i < 1 || i > 3) {
             System.out.println("Error!!! you enter wrong choice");
             return;
         }
-        if(level < sword[i-1].getLevel()){
-            System.out.println("Your level not enough to hold this sword");
-        }else{
-            currentSword = sword[i-1];
+        if(sword[i-1] == null){
+            System.out.println("You can't select empty slot...");
+        }else if (level < sword[i - 1].getLevel()) {
+            System.out.println("Your level not enough to use this sword");
+        }else {
+            currentSword = sword[i - 1];
             damage += currentSword.IncreaseDmg();
-            baseSpeed -= currentSword.DecreaseSped(baseSpeed);
+            baseSpeed -= currentSword.DecreaseSped();
         }
 
     }
 
-    public void CurrentShield(int i){
-        if(i < 1 || i > 3 ){
+    public void CurrentShield(int i) {
+        if (i < 1 || i > 3) {
             System.out.println("Error!!! you enter wrong choice");
             return;
         }
-        if(level < shield[i-1].getLevel()){
-            System.out.println("Your level not enough to hold this shield");
-        }else{
-            currentShield = shield[i-1];
+        if(shield[i-1] == null){
+            System.out.println("You can't select empty slot...");
+        }else if (level < shield[i - 1].getLevel()) {
+            System.out.println("Your level not enough to use this shield");
+        }else {
+            currentShield = shield[i - 1];
             defense += currentShield.IncreaseDef();
-            baseSpeed -= currentShield.DecreaseSped(baseSpeed);
+            baseSpeed -= currentShield.DecreaseSped();
         }
 
     }
-    public void Hold(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("You want to hold sword / shield or both?  (sw/sh/bth)");
-        System.out.print("Enter answer: ");
-        String answer = sc.nextLine();
+
+    private void SelectSword() {
         Scanner sl = new Scanner(System.in);
-        if(answer.equals("bth") || answer.equals("BTH")){
-            System.out.println("Select your sword");
-            PrintSword();
-            System.out.print("Choose sword 1 , 2 , 3 : ");
-            int as = sl.nextInt();
-            CurrentSword(as);
-
-            System.out.println("Select your shield");
-            PrintShield();
-            System.out.print("Choose sword 1 , 2 , 3 : ");
-            int as2 = sl.nextInt();
-            CurrentShield(as2);
-        }else if(answer.equals("sw") || answer.equals("SW")){
-            System.out.println("Select your sword");
-            PrintSword();
-            System.out.print("Choose sword 1 , 2 , 3 : ");
-            int as = sl.nextInt();
-            CurrentSword(as);
-            int as2 = 4;
-            CurrentShield(as2);
-        }else if(answer.equals("sh") || answer.equals("SH")){
-            System.out.println("Select your shield");
-            PrintShield();
-            System.out.print("Choose sword 1 , 2 , 3 : ");
-            int as2 = sl.nextInt();
-            CurrentShield(as2);
-            int as = 4;
-            CurrentShield(as);
-        }else{
-            System.out.println("Error!!! you enter wrong choice");
-        }
+        System.out.println("Select your sword");
+        PrintSword();
+        System.out.print("Choose sword 1 , 2 , 3 : ");
+        int as = sl.nextInt();
+        CurrentSword(as);
     }
 
+    private void SelectShield() {
+        Scanner sl = new Scanner(System.in);
+        System.out.println("Select your shield");
+        PrintShield();
+        System.out.print("Choose shield 1 , 2 , 3 : ");
+        int as2 = sl.nextInt();
+        CurrentShield(as2);
+    }
 
+    public void Hold() {
+        Scanner sc = new Scanner(System.in);
+        if ((shield[0] == null) && (sword[0] == null)) {
+            System.out.println("Sword and Shield empty...");
+        } else if ((shield[0] == null)) {
+            System.out.println("Shield empty...");
+            System.out.println("You want to use sword instead? (y/n)");
+            System.out.print("Enter answer: ");
+            String an = sc.nextLine();
+            if (an.equals("y") || an.equals("Y")) {
+                SelectSword();
+            } else if (an.equals("n") || an.equals("N")) {
+                System.out.println("Not using any item now");
+            } else {
+                System.out.println("Error!!! you enter wrong choice");
+            }
+        } else if ((sword[0] == null)) {
+            System.out.println("Sword empty...");
+            System.out.println("You want to use shield instead? (y/n)");
+            System.out.print("Enter answer: ");
+            String an = sc.nextLine();
+            if (an.equals("y") || an.equals("Y")) {
+                SelectShield();
+            } else if (an.equals("n") || an.equals("N")) {
+                System.out.println("Not using any item now");
+            } else {
+                System.out.println("Error!!! you enter wrong choice");
+            }
+        } else {
+            System.out.println("You want to hold sword / shield or both?  (sw/sh/bth)");
+            System.out.print("Enter answer: ");
+            String answer = sc.nextLine();
+            if (answer.equals("bth") || answer.equals("BTH")) {
+                SelectSword();
+                SelectShield();
+            } else if (answer.equals("sw") || answer.equals("SW")) {
+                SelectSword();
+            } else if (answer.equals("sh") || answer.equals("SH")) {
+                if ((shield[0] == null)) {
+                    SelectShield();
+                } else {
+                    System.out.println("Error!!! you enter wrong choice");
+                }
+            }
+
+        }
+    }
 }

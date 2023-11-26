@@ -8,7 +8,7 @@ public class Sword {
         this.name = name;
         SWlevel = level;
         damage = baseDmg*(1+0.1*SWlevel);
-        SItemSpeed = 100*(1+0.05*SWlevel);
+        SItemSpeed = 10*(1+0.5*SWlevel);
     }
 
     Sword(String name,int baseDmg){
@@ -20,8 +20,8 @@ public class Sword {
         return damage;
     }
 
-    public double DecreaseSped(double baseSped){
-        return baseSped*(0.1+(0.04*SWlevel));
+    public double DecreaseSped(){
+        return SItemSpeed;
     }
 
     public String getName(){

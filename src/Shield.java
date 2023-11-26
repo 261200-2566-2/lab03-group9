@@ -9,7 +9,7 @@ public class Shield {
         this.name = name;
         SHlevel = level;
         defense = baseDef*(1+0.05*SHlevel);
-        SHItemSpeed = 100*(1+0.05*SHlevel);
+        SHItemSpeed = 10*(1+0.7*SHlevel);
     }
 
 
@@ -22,8 +22,8 @@ public class Shield {
         return defense;
     }
 
-    public double DecreaseSped(double baseSped){
-        return baseSped*(0.1+(0.08*SHlevel));
+    public double DecreaseSped(){
+        return SHItemSpeed;
     }
     public String getName(){
         return name;
