@@ -18,9 +18,6 @@ public class Shield {
         //set Default level to 1
     }
 
-    public double IncreaseDef(){
-        return defense;
-    }
 
     public double DecreaseSped(){
         return SHItemSpeed;

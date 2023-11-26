@@ -210,7 +210,7 @@ public class RPGcharacter {
             System.out.println("Your level not enough to use this sword");
         }else {
             currentSword = sword[i - 1];
-            damage += currentSword.IncreaseDmg();
+            damage += currentSword.getDamage();
             baseSpeed -= currentSword.DecreaseSped();
         }
 
@@ -227,7 +227,7 @@ public class RPGcharacter {
             System.out.println("Your level not enough to use this shield");
         }else {
             currentShield = shield[i - 1];
-            defense += currentShield.IncreaseDef();
+            defense += currentShield.getDefense();
             baseSpeed -= currentShield.DecreaseSped();
         }
 

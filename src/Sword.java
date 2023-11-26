@@ -16,14 +16,9 @@ public class Sword {
         //set Default level to 1
     }
 
-    public double IncreaseDmg(){
-        return damage;
-    }
-
     public double DecreaseSped(){
         return SItemSpeed;
     }
-
     public String getName(){
         return name;
     }
