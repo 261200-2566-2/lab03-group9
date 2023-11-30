@@ -1,6 +1,7 @@
 
 public class Main {
     public static void main(String[] args) {
+
         RPGcharacter p1 = new RPGcharacter("Lnwza007");
         RPGcharacter p2 = new RPGcharacter("Zoro");
         RPGcharacter p3 = new RPGcharacter("Thorfinn");

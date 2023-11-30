@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 
 public class RPGcharacter implements Action,Sex {
-    private  String name,sex;
+    protected String name,sex;
     protected String job;
     private int level,CurrentLevel;
     protected int MaxHp,MaxMana;
@@ -18,6 +18,9 @@ public class RPGcharacter implements Action,Sex {
     private int Swsize,SHsize;
     private Sword currentSword;
     private Shield currentShield;
+
+    AllJob CurrentJob = new AllJob();
+
 
 
     RPGcharacter(String name) {
@@ -73,6 +76,7 @@ public class RPGcharacter implements Action,Sex {
     @Override
     public void Attack(RPGcharacter player) {
         player.CurrentHp -= damage;
+
     }
 
     @Override
@@ -104,8 +108,8 @@ public class RPGcharacter implements Action,Sex {
     }
 
     public void SelectJob(){
-        Swordman currentJob = new Swordman(this);
-        currentJob.UpdateStatus();
+        job = "Swordman";
+        CurrentJob.UpdateStatus(job,this);
         PrintStatus();
 
     }
@@ -120,6 +124,7 @@ public class RPGcharacter implements Action,Sex {
         MaxMana += 50 + (2 * level);
         MaxSpeed += 1.5 * level;
         baseSpeed = MaxSpeed;
+        CurrentJob.UpdateStatus(job,this);
     }
 
     public void getEXP(double exp) {

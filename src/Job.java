@@ -1,4 +1,5 @@
 public interface Job {
-    void UpdateStatus();
-    void Skill(boolean cooldown);
+    void UpdateStatus(String name,RPGcharacter py);
+
+
 }
