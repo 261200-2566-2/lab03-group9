@@ -42,18 +42,43 @@ public class RPGcharacter implements Action,Sex{
     }
 
     public static void Start(){
-        System.out.println("+--- WELCOME TO CPE GROUP9 GAME ---+");
+        System.out.println("+------------------------------------+");
+        System.out.println("|     WELCOME TO CPE GROUP9 GAME     |");
+        System.out.println("+------------------------------------+");
+        System.out.println();
         Scanner sc = new Scanner((System.in));
         System.out.print("Enter player 1 name : ");
         String nameP1 = sc.nextLine();
         RPGcharacter p1 = new RPGcharacter(nameP1);
-//        Scanner name2 = new Scanner((System.in));
-        System.out.println("Enter player 2 name : ");
+        System.out.print("Enter player 2 name : ");
         String nameP2 = sc.nextLine();
+        RPGcharacter p2 = new RPGcharacter(nameP2);
+        System.out.println();
+        // Enter name
 
-        System.out.println("+----- CHOOSE CHARACTER JOB -----+");
-        System.out.println(" 1:Swordman  2:");
-        System.out.println(p1.name + " choose your job : ");
+        System.out.println("+-- Choose your character's gender --+");
+        System.out.println(" [1] Male  [2] Female [3] Other gender");
+        System.out.print("[ " + p1.name + " ]" + " choose your gender : ");
+        String gen1 = sc.nextLine();
+        RPGcharacter g1 = new RPGcharacter(gen1);
+        System.out.print("[ " + p2.name + " ]" + " choose your gender : ");
+        String gen2 = sc.nextLine();
+        RPGcharacter g2 = new RPGcharacter(gen2);
+        System.out.println();
+        // Enter gender
+
+        System.out.println("+----- Choose character's career ----+");
+        System.out.println(" [1] Swordsman  [2] Archer [3] Assassin");
+        System.out.print("[ " + p1.name + " ]" + " choose your career : ");
+        String Job1 = sc.nextLine();
+        RPGcharacter j1 = new RPGcharacter(Job1);
+        System.out.print("[ " + p2.name + " ]" + " choose your career : ");
+        String Job2 = sc.nextLine();
+        RPGcharacter j2 = new RPGcharacter(Job2);
+        System.out.println();
+        // Enter career
+
+
 
     }
 

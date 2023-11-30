@@ -2,7 +2,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        RPGcharacter p1 = new RPGcharacter("Lnwza007");
+        //RPGcharacter p1 = new RPGcharacter("Lnwza007");
         RPGcharacter p2 = new RPGcharacter("Zoro");
         RPGcharacter p3 = new RPGcharacter("Thorfinn");
         RPGcharacter p4 = new RPGcharacter("Kirito");
@@ -15,19 +15,21 @@ public class Main {
         Shield sh2 = new Shield("Kite Shield",100,12);
         Shield sh3 = new Shield("The Aegis",450,25);
 
-        p1.AddItem(s1);
-        p1.AddItem(s2);
-        p1.AddItem(s3);
-        p1.AddItem(sh1);
-        p1.AddItem(sh2);
-        p1.AddItem(sh3);
-
-        p2.AddItem(s2);
-        p2.AddItem(s3);
-
-        p4.AddItem(s1);
-
         RPGcharacter.Start();
+
+//        p1.AddItem(s1);
+//        p1.AddItem(s2);
+//        p1.AddItem(s3);
+//        p1.AddItem(sh1);
+//        p1.AddItem(sh2);
+//        p1.AddItem(sh3);
+
+//        p2.AddItem(s2);
+//        p2.AddItem(s3);
+//
+//        p4.AddItem(s1);
+
+
         //p1.PrintStatus();
         //p2.PrintStatus();
         //p3.PrintStatus();
