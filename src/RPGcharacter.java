@@ -38,7 +38,6 @@ public class RPGcharacter implements Action,Sex{
         baseSpeed = MaxSpeed;
         CurrentExp = 0;
         MaxExp = 500;
-//        SelectSex();
     }
 
     public static void Start(){
@@ -49,9 +48,11 @@ public class RPGcharacter implements Action,Sex{
         Scanner sc = new Scanner((System.in));
         System.out.print("Enter player 1 name : ");
         String nameP1 = sc.nextLine();
+        if(nameP1.isEmpty() || nameP1.equals(" ")) nameP1 = "Unknown player1";
         RPGcharacter p1 = new RPGcharacter(nameP1);
         System.out.print("Enter player 2 name : ");
         String nameP2 = sc.nextLine();
+        if(nameP2.isEmpty() || nameP2.equals(" ")) nameP2 = "Unknown player2";
         RPGcharacter p2 = new RPGcharacter(nameP2);
         System.out.println();
         // Enter name
@@ -60,10 +61,10 @@ public class RPGcharacter implements Action,Sex{
         System.out.println(" [1] Male  [2] Female [3] Other gender");
         System.out.print("[ " + p1.name + " ]" + " choose your gender : ");
         String gen1 = sc.nextLine();
-        RPGcharacter g1 = new RPGcharacter(gen1);
+        p1.SelectSex(gen1);
         System.out.print("[ " + p2.name + " ]" + " choose your gender : ");
         String gen2 = sc.nextLine();
-        RPGcharacter g2 = new RPGcharacter(gen2);
+        p2.SelectSex(gen2);
         System.out.println();
         // Enter gender
 
@@ -71,14 +72,24 @@ public class RPGcharacter implements Action,Sex{
         System.out.println(" [1] Swordsman  [2] Archer [3] Assassin");
         System.out.print("[ " + p1.name + " ]" + " choose your career : ");
         String Job1 = sc.nextLine();
-        RPGcharacter j1 = new RPGcharacter(Job1);
+        p1.SelectJob(Job1);
         System.out.print("[ " + p2.name + " ]" + " choose your career : ");
         String Job2 = sc.nextLine();
-        RPGcharacter j2 = new RPGcharacter(Job2);
+        p2.SelectJob(Job2);
         System.out.println();
         // Enter career
 
+        System.out.println("+--- Enter EXP you want to increase ---+");
+        System.out.print("[ " + p1.name + " ]" + " Enter your EXP : ");
+        double exp1 = Double.parseDouble(sc.nextLine());
+        p1.getEXP(exp1);
+        System.out.print("[ " + p2.name + " ]" + " Enter your EXP : ");
+        double exp2 = Double.parseDouble(sc.nextLine());
+        p2.getEXP(exp2);
+        System.out.println();
 
+        p1.PrintStatus();
+        p2.PrintStatus();
 
     }
 
@@ -101,15 +112,24 @@ public class RPGcharacter implements Action,Sex{
 //    }
 
     @Override
-    public void SelectSex() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Select your character's sex");
-        System.out.print("Enter character's sex (male/female) : ");
-        String sex = sc.nextLine();
-        if(sex.equals("male") | sex.equals("female")){
-            this.sex = sex;
-        }else{
-            System.out.println("Wrong answer");
+    public void SelectSex(String gender) {
+        switch (gender) {
+            case "1" -> {
+                this.sex = "Male";
+                System.out.println( "Choose gender : " + sex);
+            }
+            case "2" -> {
+                this.sex = "Female";
+                System.out.println( "Choose gender : " + sex);
+            }
+            case "3" -> {
+                this.sex = "Other gender";
+                System.out.println( "Choose gender : " + sex);
+            }
+            default -> {
+                System.out.println("You didn't select choose 1 , 2 or 3! -> Set gender : Unknown gender");
+                this.sex = "Unknown gender";
+            }
         }
     }
 
@@ -131,13 +151,14 @@ public class RPGcharacter implements Action,Sex{
         System.out.println("+-------------------------------------+");
         System.out.println("[ Status : " + name + " ]");
         System.out.println("+-------------------------------------+");
-        System.out.println("Job : " + job);
+        System.out.println("Gender : " + sex);
+        System.out.println("Career : " + job);
         System.out.println("Level : " + level);
         System.out.println("Max HP : " + MaxHp);
         System.out.println("Max Mana : " + MaxMana);
-        System.out.println("CurrentSpeed" + " / " + "MaxSpeed : " + baseSpeed + " / " + MaxSpeed);
-        System.out.println("Damage : " + damage);
-        System.out.println("Defense : " + defense);
+        System.out.println("Damage : " + (Math.floor( damage * 100) / 100) );
+        System.out.println("Defense : " + (Math.floor( defense * 100) / 100) );
+        System.out.println("CurrentSpeed" + " / " + "MaxSpeed : " + (Math.floor( baseSpeed * 100 ) / 100) + " / " + (Math.floor( MaxSpeed * 100) / 100) );
         System.out.println("Exp / MaxEXP : " + CurrentExp + " / " + MaxExp);
         System.out.println("+-------------------------------------+");
         System.out.println("[ Current item ]");
@@ -149,11 +170,25 @@ public class RPGcharacter implements Action,Sex{
 
     }
 
-    public void SelectJob(){
-        job = "Swordman";
-        CurrentJob.UpdateStatus(job,this);
-        PrintStatus();
-
+    public void SelectJob(String job){
+        switch (job) {
+            case "1" -> {
+                CurrentJob.UpdateStatus("Swordsman", this);
+                System.out.println( "Choose career : Swordsman");
+            }
+            case "2" -> {
+                CurrentJob.UpdateStatus("Archer", this);
+                System.out.println( "Choose career : Archer");
+            }
+            case "3" -> {
+                CurrentJob.UpdateStatus("Assassin", this);
+                System.out.println( "Choose career : Assassin");
+            }
+            default -> {
+                System.out.println("You didn't select choose a career! -> Set career : Villager");
+                CurrentJob.UpdateStatus("Villager", this);
+            }
+        }
     }
 
     private void LevelUp() {

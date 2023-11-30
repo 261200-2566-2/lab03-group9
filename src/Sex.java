@@ -1,3 +1,3 @@
 public interface Sex {
-    void SelectSex();
+    void SelectSex(String gender);
 }

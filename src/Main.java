@@ -2,11 +2,6 @@
 public class Main {
     public static void main(String[] args) {
 
-        //RPGcharacter p1 = new RPGcharacter("Lnwza007");
-        RPGcharacter p2 = new RPGcharacter("Zoro");
-        RPGcharacter p3 = new RPGcharacter("Thorfinn");
-        RPGcharacter p4 = new RPGcharacter("Kirito");
-
         Sword s1 = new Sword("ดาบไทย",20);
         Sword s2 = new Sword("Muramasa",110,9);
         Sword s3 = new Sword("Excalibur",1000,25);
@@ -16,6 +11,7 @@ public class Main {
         Shield sh3 = new Shield("The Aegis",450,25);
 
         RPGcharacter.Start();
+
 
 //        p1.AddItem(s1);
 //        p1.AddItem(s2);
