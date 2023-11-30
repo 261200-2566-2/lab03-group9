@@ -1,37 +1,83 @@
 import java.util.Scanner;
 
-public class RPGcharacter {
-    private  String name;
-    private int level;
-    private int CurrentLevel;
-    private int MaxHp;
-    private int MaxMana;
-    private double damage;
-    private double defense;
-    private double MaxSpeed;
-    private double baseSpeed;
+
+public class RPGcharacter implements Action,Sex {
+    private  String name,sex;
+    protected String job;
+    private int level,CurrentLevel;
+    protected int MaxHp,MaxMana;
+    protected double CurrentHp,CurrentMana;
+    protected double damage,defense;
+    protected double CurrentAtk,CurrentDef;
+    protected double MaxSpeed;
+    protected double baseSpeed;
     private double CurrentExp;
     private int MaxExp;
     private Sword[] sword = new Sword[3];
     private Shield[] shield = new Shield[3];
-    private int Swsize;
+    private int Swsize,SHsize;
     private Sword currentSword;
     private Shield currentShield;
-    private int SHsize;
 
 
     RPGcharacter(String name) {
         this.name = name;
         level = 1;
         MaxHp = 100;
+        CurrentHp = MaxHp;
         MaxMana = 100;
+        CurrentMana = MaxMana;
         damage = 50;
+        CurrentAtk = damage;
         defense = 10;
+        CurrentDef = defense;
         MaxSpeed = 100;
         baseSpeed = MaxSpeed;
         CurrentExp = 0;
         MaxExp = 500;
+//        SelectSex();
+    }
 
+
+    public void PlayWith(RPGcharacter player2){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Attack y/n");
+        System.out.print("Enter Answer: ");
+        String as = sc.nextLine();
+        if(as.equals("y")){
+            System.out.println(player2.name + " want to block? (y/n)");
+            String PlayerAnswer = sc.nextLine();
+            if(PlayerAnswer.equals("y")){
+                player2.Block(this);
+                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
+            }else if(PlayerAnswer.equals("n")){
+                this.Attack(player2);
+                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
+            }
+        }
+    }
+
+    @Override
+    public void SelectSex() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Select your character's sex");
+        System.out.print("Enter character's sex (male/female) : ");
+        String sex = sc.nextLine();
+        if(sex.equals("male") | sex.equals("female")){
+            this.sex = sex;
+        }else{
+            System.out.println("Wrong answer");
+        }
+    }
+
+    @Override
+    public void Attack(RPGcharacter player) {
+        player.CurrentHp -= damage;
+    }
+
+    @Override
+    public void Block(RPGcharacter player) {
+         this.CurrentHp -= player.damage - defense;
     }
 
     //set default player stat
@@ -39,6 +85,7 @@ public class RPGcharacter {
         System.out.println("+-------------------------------------+");
         System.out.println("[ Status : " + name + " ]");
         System.out.println("+-------------------------------------+");
+        System.out.println("Job : " + job);
         System.out.println("Level : " + level);
         System.out.println("Max HP : " + MaxHp);
         System.out.println("Max Mana : " + MaxMana);
@@ -53,6 +100,13 @@ public class RPGcharacter {
         System.out.println("+-------------------------------------+");
         System.out.println();
 
+
+    }
+
+    public void SelectJob(){
+        Swordman currentJob = new Swordman(this);
+        currentJob.UpdateStatus();
+        PrintStatus();
 
     }
 
@@ -82,6 +136,9 @@ public class RPGcharacter {
         }
     }
 
+    public int getLevel(){
+        return level;
+    }
 
     private void PrintCurrentItem() {
         if (currentShield != null && currentSword != null) {
