@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class RPGcharacter implements Action,Sex {
+public class RPGcharacter implements Action,Sex{
     protected String name,sex;
     protected String job;
     private int level,CurrentLevel;
@@ -41,12 +41,27 @@ public class RPGcharacter implements Action,Sex {
 //        SelectSex();
     }
 
+    public static void Start(){
+        System.out.println("+--- WELCOME TO CPE GROUP9 GAME ---+");
+        Scanner sc = new Scanner((System.in));
+        System.out.print("Enter player 1 name : ");
+        String nameP1 = sc.nextLine();
+        RPGcharacter p1 = new RPGcharacter(nameP1);
+//        Scanner name2 = new Scanner((System.in));
+        System.out.println("Enter player 2 name : ");
+        String nameP2 = sc.nextLine();
 
-    public void PlayWith(RPGcharacter player2){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Attack y/n");
-        System.out.print("Enter Answer: ");
-        String as = sc.nextLine();
+        System.out.println("+----- CHOOSE CHARACTER JOB -----+");
+        System.out.println(" 1:Swordman  2:");
+        System.out.println(p1.name + " choose your job : ");
+
+    }
+
+//    public void PlayWith(RPGcharacter player2){
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Attack y/n");
+//        System.out.print("Enter Answer: ");
+//        String as = sc.nextLine();
 //        if(as.equals("y")){
 //            System.out.println(player2.name + " want to block? (y/n)");
 //            String PlayerAnswer = sc.nextLine();
@@ -58,7 +73,7 @@ public class RPGcharacter implements Action,Sex {
 //                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
 //            }
 //        }
-    }
+//    }
 
     @Override
     public void SelectSex() {
@@ -82,11 +97,9 @@ public class RPGcharacter implements Action,Sex {
 
     @Override
     public void Heal() {
-        CurrentHp += 35*(1+0.02*level);
-        if(CurrentHp >= MaxHp){
-            CurrentHp = MaxHp;
-        }
+
     }
+
 
     //set default player stat
     public void PrintStatus() {
@@ -95,7 +108,7 @@ public class RPGcharacter implements Action,Sex {
         System.out.println("+-------------------------------------+");
         System.out.println("Job : " + job);
         System.out.println("Level : " + level);
-        System.out.println("HP / Max HP : " + CurrentHp + " / " + MaxHp);
+        System.out.println("Max HP : " + MaxHp);
         System.out.println("Max Mana : " + MaxMana);
         System.out.println("CurrentSpeed" + " / " + "MaxSpeed : " + baseSpeed + " / " + MaxSpeed);
         System.out.println("Damage : " + damage);
