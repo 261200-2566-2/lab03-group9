@@ -47,17 +47,17 @@ public class RPGcharacter implements Action,Sex {
         System.out.println("Attack y/n");
         System.out.print("Enter Answer: ");
         String as = sc.nextLine();
-        if(as.equals("y")){
-            System.out.println(player2.name + " want to block? (y/n)");
-            String PlayerAnswer = sc.nextLine();
-            if(PlayerAnswer.equals("y")){
-                player2.Block(this);
-                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
-            }else if(PlayerAnswer.equals("n")){
-                this.Attack(player2);
-                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
-            }
-        }
+//        if(as.equals("y")){
+//            System.out.println(player2.name + " want to block? (y/n)");
+//            String PlayerAnswer = sc.nextLine();
+//            if(PlayerAnswer.equals("y")){
+//                player2.Block(this);
+//                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
+//            }else if(PlayerAnswer.equals("n")){
+//                this.Attack(player2);
+//                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
+//            }
+//        }
     }
 
     @Override
@@ -80,8 +80,11 @@ public class RPGcharacter implements Action,Sex {
     }
 
     @Override
-    public void Block(RPGcharacter player) {
-         this.CurrentHp -= player.damage - defense;
+    public void Heal() {
+        CurrentHp += 35*(1+0.02*level);
+        if(CurrentHp >= MaxHp){
+            CurrentHp = MaxHp;
+        }
     }
 
     //set default player stat
@@ -91,7 +94,7 @@ public class RPGcharacter implements Action,Sex {
         System.out.println("+-------------------------------------+");
         System.out.println("Job : " + job);
         System.out.println("Level : " + level);
-        System.out.println("Max HP : " + MaxHp);
+        System.out.println("HP / Max HP : " + CurrentHp + " / " + MaxHp);
         System.out.println("Max Mana : " + MaxMana);
         System.out.println("CurrentSpeed" + " / " + "MaxSpeed : " + baseSpeed + " / " + MaxSpeed);
         System.out.println("Damage : " + damage);
