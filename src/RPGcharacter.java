@@ -75,8 +75,9 @@ public class RPGcharacter implements Action,Sex {
 
     @Override
     public void Attack(RPGcharacter player) {
-        player.CurrentHp -= damage;
-
+        double dmg = player.defense - CurrentAtk;
+        player.CurrentHp -= dmg;
+        System.out.println("ATK : " + dmg);
     }
 
     @Override
