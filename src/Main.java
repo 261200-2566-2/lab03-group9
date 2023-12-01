@@ -2,6 +2,10 @@
 public class Main {
     public static void main(String[] args) {
 
+        RPGcharacter p1 = new RPGcharacter("Lnwza007");
+        RPGcharacter p2 = new RPGcharacter("Zoro");
+        RPGcharacter p3 = new RPGcharacter("Thorfinn");
+        RPGcharacter p4 = new RPGcharacter("Kirito");
         Sword s1 = new Sword("ดาบไทย",20);
         Sword s2 = new Sword("Muramasa",110,9);
         Sword s3 = new Sword("Excalibur",1000,25);
@@ -30,6 +34,8 @@ public class Main {
         //p2.PrintStatus();
         //p3.PrintStatus();
         //p4.PrintStatus();
+
+
 
 //        //test p1 lv up to 25 and try to use Excalibur(lv 25)
 //        p1.SelectJob();

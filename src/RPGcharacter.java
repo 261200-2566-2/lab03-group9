@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class RPGcharacter implements Action,Sex{
+public class RPGcharacter implements Action,Sex {
     protected String name,sex;
     protected String job;
     private int level,CurrentLevel;
@@ -18,6 +18,7 @@ public class RPGcharacter implements Action,Sex{
     private int Swsize,SHsize;
     private Sword currentSword;
     private Shield currentShield;
+    private Ring ring;
 
     AllJob CurrentJob = new AllJob();
 
@@ -109,7 +110,7 @@ public class RPGcharacter implements Action,Sex{
 //                System.out.printf(player2.name + " Hp = " + player2.CurrentHp);
 //            }
 //        }
-//    }
+
 
     @Override
     public void SelectSex(String gender) {
@@ -135,16 +136,27 @@ public class RPGcharacter implements Action,Sex{
 
     @Override
     public void Attack(RPGcharacter player) {
-        double dmg = player.defense - CurrentAtk;
+        double dmg = CurrentAtk - player.defense;
+        if(dmg < 0){
+            dmg = 0;
+        }
         player.CurrentHp -= dmg;
-        System.out.println("ATK : " + dmg);
+        System.out.println("ATK : " + String.format("%.1f",dmg));
+        if(ring != null) System.out.println(ring.getBonus());
     }
 
     @Override
     public void Heal() {
+        double heal = 35*(1+0.02*level);
+        CurrentHp += heal;
+        if(CurrentHp >= MaxHp){
+            CurrentHp = MaxHp;
+            System.out.println("+" + heal + " Hp" + " [Max Hp!!!]");
+        }else{
+            System.out.println("Heal!!! +" + heal + " Hp") ;
+        }
 
     }
-
 
     //set default player stat
     public void PrintStatus() {
@@ -388,6 +400,11 @@ public class RPGcharacter implements Action,Sex{
         System.out.print("Choose shield 1 , 2 , 3 : ");
         int as2 = sl.nextInt();
         CurrentShield(as2);
+    }
+
+    public void addAccessories(Ring ring){
+        this.ring = ring;
+        this.ring.AccUpdateStatus(this);
     }
 
     public void Hold() {
